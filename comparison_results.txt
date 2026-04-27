@@ -1,0 +1,50 @@
+Training command:
+go run . train -games 3000 -size 9 -out rl_policy.json -seed 20260421
+
+Training output:
+Trained RL agent for 3000 games on a 9x9 board
+X wins: 1370 | O wins: 956 | Draws: 674 | Invalid games: 0
+Average moves: 38.09
+Saved policy to rl_policy.json
+
+Comparison commands:
+go run . compare -games 100 -size 9 -policy rl_policy.json -depth 2 -openings 4 -seed 20260422
+go run . compare -games 100 -size 9 -policy rl_policy.json -depth 3 -openings 4 -seed 20260422
+go run . compare -games 20 -size 9 -policy rl_policy.json -depth 4 -openings 4 -seed 20260422
+go run . compare -games 50 -size 9 -policy rl_policy.json -depth 2 -openings 4 -seed 20260426 -left imported -right alphabeta
+go run . compare -games 50 -size 9 -policy rl_policy.json -depth 2 -openings 4 -seed 20260426 -left imported -right rl
+
+Comparison output, depth 2:
+Compared RL policy against alpha-beta for 100 games
+Board: 9x9 | Alpha-beta depth: 2
+Random opening moves: 4 | Seed: 20260422
+RL wins: 91 | Alpha-beta wins: 9 | Draws: 0 | Invalid games: 0
+Average moves: 15.51
+
+Comparison output, depth 3:
+Compared RL policy against alpha-beta for 100 games
+Board: 9x9 | Alpha-beta depth: 3
+Random opening moves: 4 | Seed: 20260422
+RL wins: 88 | Alpha-beta wins: 12 | Draws: 0 | Invalid games: 0
+Average moves: 16.20
+
+Comparison output, depth 4:
+Compared RL policy against alpha-beta for 20 games
+Board: 9x9 | Alpha-beta depth: 4
+Random opening moves: 4 | Seed: 20260422
+RL wins: 14 | Alpha-beta wins: 6 | Draws: 0 | Invalid games: 0
+Average moves: 19.30
+
+Comparison output, imported vs alpha-beta:
+Compared Imported AI against Alpha-Beta for 50 games
+Board: 9x9 | Search depth: 2
+Random opening moves: 4 | Seed: 20260426
+Imported AI wins: 47 | Alpha-Beta wins: 3 | Draws: 0 | Invalid games: 0
+Average moves: 13.68
+
+Comparison output, imported vs RL:
+Compared Imported AI against RL Policy for 50 games
+Board: 9x9 | Search depth: 2
+Random opening moves: 4 | Seed: 20260426
+Imported AI wins: 15 | RL Policy wins: 7 | Draws: 28 | Invalid games: 0
+Average moves: 56.90
